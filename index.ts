@@ -17,7 +17,7 @@ try {
         cleanupFiles.push(tmpFile);
         ctr++;
     }
-    console.log(execSync(`${path.join(__dirname, 'ffmpeg_win', "bin", "ffmpeg.exe")} -r 1 -f image2 -s 1920x1080 -i img%d.png -vcodec libx264 -crf 15 -pix_fmt yuv420p out.mp4`, { cwd: TMP_PATH }));
+    console.log(execSync(`ffmpeg -r 1 -f image2 -s 1920x1080 -i img%d.png -vcodec libx264 -crf 15 -pix_fmt yuv420p out.mp4`, { cwd: TMP_PATH }));
     execSync(`mv '${path.join(TMP_PATH, "out.mp4")}' /home/pi/phogrows/timelapse.mp4`);
 } finally {
     for (let f of cleanupFiles) {
